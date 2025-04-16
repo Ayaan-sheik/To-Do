@@ -1,6 +1,10 @@
 
 /* color for selection:: #00BCD4 */
 
+
+* {
+    box-sizing: border-box;
+}
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -179,4 +183,239 @@ body {
     text-align: center;
     padding: 10px;
     font-size: 0.9em;
+}
+/* === MODAL OVERLAY === */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+body.modal-open {
+    overflow: hidden;
+}
+
+/* === BASE MODAL CONTENT === */
+.modal-content {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 700px;
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: modalFadeIn 0.3s ease;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* === HEADER === */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid #e0e0e0;
+    background-color: #00BCD4;
+    color: white;
+    border-radius: 8px 8px 0 0;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.close-modal {
+    font-size: 24px;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.close-modal:hover {
+    color: #ddd;
+}
+
+/* === BODY AND FOOTER === */
+.modal-body {
+    padding: 20px;
+}
+
+.modal-footer {
+    padding: 15px 20px;
+    border-top: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+/* === FORMS === */
+#add-project-form,
+#edit-project-form,
+#add-task-form {
+    padding: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #666;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: #00BCD4;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 188, 212, 0.3);
+}
+
+/* === FORM ACTIONS === */
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+/* === BUTTONS === */
+.btn-cancel,
+.btn-submit,
+.btn-delete,
+.btn-close {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn-cancel,
+.btn-close {
+    background-color: #f0f0f0;
+    color: #666;
+}
+
+.btn-cancel:hover,
+.btn-close:hover {
+    background-color: #e0e0e0;
+}
+
+.btn-submit {
+    background-color: #00BCD4;
+    color: white;
+}
+
+.btn-submit:hover {
+    background-color: #00ACC1;
+}
+
+.btn-delete {
+    background-color: #f44336;
+    color: white;
+}
+
+.btn-delete:hover {
+    background-color: #e53935;
+}
+
+/* === TASK DETAILS HIGHLIGHT === */
+.task-detail-item {
+    margin-bottom: 10px;
+}
+
+.selected {
+    background-color: #e0f7fa;
+    border-left: 3px solid #00BCD4;
+}
+
+/* this code below may be removed modal ui changes for 
+ task shit */
+
+ /* Styles only for Add Task Modal */
+.add-task-modal {
+    border-left: 6px solid #fbfbfb;
+    background: #fbfbfb;
+    max-width: 550px;
+    padding: 2rem 2rem 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.add-task-modal {
+    display: flex;
+    gap:10px;
+    flex-direction: column;
+
+}
+/* Make headers more vibrant */
+.add-task-modal .modal-header h2 {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.add-task-modal .modal-header{
+    border-radius: 6px;
+}
+
+/* Add spacing between form groups */
+.add-task-modal .form-group {
+    margin-bottom: 1.25rem;
+}
+
+/* Custom button colours */
+.add-task-modal .btn-submit {
+    background: #00BCD4;
+    color: white;
+    font-weight: 500;
+}
+
+.add-task-modal .btn-submit:hover {
+    background: #00ACC1;
+}
+
+.add-task-modal .btn-cancel {
+    background: transparent;
+    border: 1px solid #ccc;
+    color: #555;
+}
+
+.add-task-modal .btn-cancel:hover {
+    background: #eee;
+    border-color: #aaa;
 }
